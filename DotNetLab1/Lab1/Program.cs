@@ -10,7 +10,10 @@ namespace DotNetLab1.Lab1
 {
 	public static class Program
 	{
-
+		public static void PrintEventInvoke(object sender, ArrayItemEventArgs<int> e)
+		{
+			Console.WriteLine($"_____Event invoked: \"{e.Action}\" Item: {e.Item} Index: {e.Index}_____");
+		}
 		public static void Foreach<T>(this IEnumerable<T> enumerable, Action<T> action)
 		{
 			foreach (var item in enumerable)
@@ -20,8 +23,6 @@ namespace DotNetLab1.Lab1
 		}
 		static void Main(string[] args)
 		{
-
-
 
 			DynamicArray<int> myArray = new DynamicArray<int>();
 
@@ -68,13 +69,7 @@ namespace DotNetLab1.Lab1
 			Console.WriteLine("Clear myArray:");
 			myArray.Foreach(item => Console.Write(item + " "));
 
-			
-
 			Console.ReadLine();
-		}
-		public static void PrintEventInvoke(object sender, ArrayItemEventArgs<int> e)
-		{
-			Console.WriteLine($"_____Event invoked: \"{e.Action}\" Item: {e.Item} Index: {e.Index}_____");
 		}
 	}
 }
