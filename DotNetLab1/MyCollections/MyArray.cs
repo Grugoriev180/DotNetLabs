@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Linq;
 
-public class DynamicArray<T> : IEnumerable<T>
+public class DynamicArray<T> : IList<T>
 {
 
 	private LinkedListNode head;
@@ -28,10 +28,8 @@ public class DynamicArray<T> : IEnumerable<T>
 		count = 0;
 	}
 
-	public int Count
-	{
-		get { return count; }
-	}
+	public int Count => count;
+	public bool IsReadOnly => false;
 
 	public T this[int index]
 	{
@@ -273,12 +271,7 @@ public class DynamicArray<T> : IEnumerable<T>
 
 	public IEnumerator<T> GetEnumerator()
 	{
-		LinkedListNode current = head;
-		while (current != null)
-		{
-			yield return current.Data;
-			current = current.Next;
-		}
+		return new MyEnumerator<T>(this);
 	}
 
 	IEnumerator IEnumerable.GetEnumerator()
