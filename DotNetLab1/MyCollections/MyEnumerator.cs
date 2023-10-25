@@ -19,6 +19,7 @@ namespace DotNetLab1.MyCollections
 
 		public MyEnumerator(IList<T> collection)
 		{
+
 			_list = collection;
 			_index = -1;
 

@@ -1,15 +1,17 @@
 ﻿using DotNetLab1.MyCollections;
 using DotNetLab1.MyCollections.CustomEventArgs;
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Xml.Linq;
+
+namespace DotNetLab1;
 
 public class DynamicArray<T> : IList<T>
 {
 
 	private LinkedListNode head;
 	private int count;
+
+	public int Count => count;
+	public bool IsReadOnly => false;
 
 	private class LinkedListNode
 	{
@@ -27,9 +29,38 @@ public class DynamicArray<T> : IList<T>
 		head = null;
 		count = 0;
 	}
+	
+	public DynamicArray(IEnumerable<T> collection)
+	{
+		if (collection == null)
+		{
+			throw new ArgumentNullException("collection");
+		}
 
-	public int Count => count;
-	public bool IsReadOnly => false;
+		head = null;
+		count = 0;
+
+		foreach (T item in collection)
+		{
+			Add(item);
+		}
+	}
+	
+	public DynamicArray(int size)
+	{
+		if (size < 0)
+		{
+			throw new ArgumentOutOfRangeException("size");
+		}
+
+		head = null;
+		count = 0;
+
+		for (int i = 0; i < size; i++)
+		{
+			Add(default(T)); 
+		}
+	}
 
 	public T this[int index]
 	{
@@ -95,6 +126,11 @@ public class DynamicArray<T> : IList<T>
 	#endregion 
 	public void Add(T item)
 	{
+		if (item == null)
+		{
+			throw new ArgumentNullException(nameof(item), "Item cannot be null");
+		}
+
 		LinkedListNode newNode = new LinkedListNode(item);
 		if (head == null)
 		{
@@ -113,34 +149,24 @@ public class DynamicArray<T> : IList<T>
 		OnItemAdded(item, Count - 1);
 	}
 
-
-
 	public bool Contains(T item)
 	{
 		if (item is null)
-		{
 			throw new ArgumentNullException(nameof(item), "Item to check for existance cannot be null.");
-		}
-
+		
 		return IndexOf(item) != -1;
 	}
 
 	public void CopyTo(T[] array, int arrayIndex)
 	{
 		if (array == null)
-		{
 			throw new ArgumentNullException(nameof(array), "Array cannot be null.");
-		}
 
 		if (arrayIndex < 0 || arrayIndex > array.Length)
-		{
 			throw new ArgumentOutOfRangeException(nameof(arrayIndex), "Invalid array index.");
-		}
 
 		if (count > array.Length - arrayIndex)
-		{
 			throw new ArgumentException("The destination array does not have enough space.");
-		}
 
 		LinkedListNode current = head;
 		while (current != null)
@@ -153,9 +179,7 @@ public class DynamicArray<T> : IList<T>
 	public int IndexOf(T item)
 	{
 		if (item == null)
-		{
 			throw new ArgumentNullException(nameof(item), "Item to search cannot be null.");
-		}
 
 		int index = 0;
 		LinkedListNode current = head;
@@ -176,6 +200,12 @@ public class DynamicArray<T> : IList<T>
 
 	public void Insert(int index, T item)
 	{
+		
+		if (item == null)
+		{
+			throw new ArgumentNullException(nameof(item), "Item cannot be null");
+		}
+		
 		if (index < 0 || index > count)
 			throw new ArgumentOutOfRangeException(nameof(index));
 
@@ -205,9 +235,7 @@ public class DynamicArray<T> : IList<T>
 	public bool Remove(T item)
 	{
 		if (item == null)
-		{
 			throw new ArgumentNullException(nameof(item), "Item to search cannot be null.");
-		}
 
 
 		LinkedListNode current = head;

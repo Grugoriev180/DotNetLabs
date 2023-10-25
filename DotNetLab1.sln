@@ -5,6 +5,8 @@ VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetLab1", "DotNetLab1\DotNetLab1.csproj", "{FDEBC69E-9AA5-4150-BAF4-63DAF71BD9EC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetLab1Tests", "DotNetLab1Tests\DotNetLab1Tests.csproj", "{2B9CFA02-E2F9-4FE2-9CDB-3B7B89B4192B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{FDEBC69E-9AA5-4150-BAF4-63DAF71BD9EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDEBC69E-9AA5-4150-BAF4-63DAF71BD9EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDEBC69E-9AA5-4150-BAF4-63DAF71BD9EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B9CFA02-E2F9-4FE2-9CDB-3B7B89B4192B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B9CFA02-E2F9-4FE2-9CDB-3B7B89B4192B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B9CFA02-E2F9-4FE2-9CDB-3B7B89B4192B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B9CFA02-E2F9-4FE2-9CDB-3B7B89B4192B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

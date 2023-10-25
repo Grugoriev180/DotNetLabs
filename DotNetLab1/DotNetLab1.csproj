@@ -7,4 +7,12 @@
     <OutputType>Exe</OutputType>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="xunit" Version="2.5.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="MyCollections.Test\MyCollections.Test.csproj.cs" />
+  </ItemGroup>
+
 </Project>
